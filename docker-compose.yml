@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./admin-frontend
+    container_name: market-admin-frontend
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "4200:4200"
+
+  api:
+    build: ./api
+    container_name: market-api
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - HOST=http://market.ru
+      - MONGO_URL=mongodb://api_db:27017
+    depends_on:
+      - api_db
+  
+  api_db:
+    image: mongo
+    container_name: market-db
+    volumes:
+      - mongodb_api:/data/db
+
+volumes:
+  mongodb_api:
