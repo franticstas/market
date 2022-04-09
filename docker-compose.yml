@@ -6,8 +6,8 @@ services:
     container_name: market-admin-frontend
     command: npm run start
     restart: unless-stopped
-    ports:
-      - "4200:4200"
+    volumes:
+      - ./admin-frontend/src:/usr/src/app/src
 
   api:
     build: ./api
@@ -28,6 +28,16 @@ services:
     container_name: market-db
     volumes:
       - mongodb_api:/data/db
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: market-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - frontend
 
 volumes:
   mongodb_api:
