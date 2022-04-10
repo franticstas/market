@@ -8,26 +8,30 @@ services:
     restart: unless-stopped
     volumes:
       - ./admin-frontend/src:/usr/src/app/src
+    networks:
+      - market-network
 
   api:
     build: ./api
     container_name: market-api
     command: npm run start
     restart: unless-stopped
-    ports:
-      - "3001:3001"
     environment:
       - PORT=3001
       - HOST=http://market.ru
       - MONGO_URL=mongodb://api_db:27017
     depends_on:
       - api_db
+    networks:
+      - market-network
   
   api_db:
     image: mongo
     container_name: market-db
     volumes:
       - mongodb_api:/data/db
+    networks:
+      - market-network
 
   nginx:
     image: nginx:stable-alpine
@@ -38,6 +42,13 @@ services:
       - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
     depends_on:
       - frontend
+      - api
+    networks:
+      - market-network
 
 volumes:
   mongodb_api:
+
+networks:
+  market-network:
+    driver: bridge

@@ -10,4 +10,9 @@ server {
         proxy_set_header Connection "upgrade";
         proxy_set_header Host $host;
     }
+
+    location /api {
+        proxy_pass http://api:3001;
+        rewrite ^/api/(.*) /$1 break;
+    }
 }

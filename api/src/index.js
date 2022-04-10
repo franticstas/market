@@ -14,6 +14,13 @@ app.get('/test', (req, res) => {
     res.send('TESK OK!!!')
 })
 
+app.get('/currentUser', (req, res) => {
+    res.json({
+        id: '1234',
+        email: 'ttt@aaa.ru'
+    })
+})
+
 app.listen(port, () => {
     console.log(`Started api service on port: ${port}`);
     console.log(`On host ${host}`);
