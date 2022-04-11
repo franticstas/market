@@ -46,9 +46,6 @@ services:
     networks:
       - market-network
 
-volumes:
-  mongodb_api:
-
 networks:
   market-network:
     driver: bridge

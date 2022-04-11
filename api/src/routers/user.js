@@ -13,3 +13,9 @@ router.post('/users', async (req, res) => {
         res.status(400).send(e)
     }
 })
+
+router.get('/test', (req, res) => {
+    res.send('TESK OK!!!')
+})
+
+module.exports = router
