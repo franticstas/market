@@ -14,7 +14,9 @@ services:
   api:
     build: ./api
     container_name: market-api
-    command: npm run start
+    command: npm run dev
+    volumes:
+      - ./api/src:/usr/src/app/src
     restart: unless-stopped
     environment:
       - PORT=3001
@@ -28,6 +30,12 @@ services:
   api_db:
     image: mongo
     container_name: market-db
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_DATABASE=mapi_db
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
       - mongodb_api:/data/db
     networks:
@@ -45,6 +53,9 @@ services:
       - api
     networks:
       - market-network
+
+volumes:
+  mongodb_api:
 
 networks:
   market-network:

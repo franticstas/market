@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const {db} = require('../configuration')
 
-mongoose.connect('db/market-api', {
+mongoose.connect(`${db}`, {
     useNewUrlParser: true,
     useCreateIndex: true
 })
