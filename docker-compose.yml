@@ -31,6 +31,8 @@ services:
     image: mongo
     container_name: market-db
     restart: always
+    volumes:
+      - mongodb_api:/data/db
     networks:
       - market-network
 
@@ -46,6 +48,9 @@ services:
       - api
     networks:
       - market-network
+
+volumes:
+  mongodb_api:
 
 networks:
   market-network:
