@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
     environment:
       - PORT=3001
-      - HOST=http://market.ru
+      - HOST=http://front-market.ru
       - MONGO_URL=mongodb://api_db:27017/marketDB
     depends_on:
       - api_db
