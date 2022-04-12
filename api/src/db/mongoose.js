@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const {db} = require('../configuration')
 
-mongoose.connect(`${db}`, {
-    useNewUrlParser: true,
-    useCreateIndex: true
-})
+console.log('MONGOOSE db ', db);
+mongoose.connect(db)
+        .catch(error => handleError(error));
