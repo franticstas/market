@@ -11,11 +11,11 @@ export class AppComponent {
 
   send() {
     const user = {
-      name: 'Test name',
-      email: 'rrrr@sss.ru'
+      name: 'Test name1',
+      email: 'rrrr13@sss.ru'
     }
     
-    this.http.post('/api/users', user).subscribe()
-    this.http.get('/api/test').subscribe()
+    // this.http.post('/api/users', user).subscribe()
+    this.http.get<string>('/api/test').subscribe()
   }
 }
