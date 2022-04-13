@@ -13,21 +13,19 @@
 
             <mat-list-item [routerLink]="'products'" routerLinkActive="active">
                 <mat-icon mat-list-icon>shopping_basket</mat-icon>
-                <span *ngIf="isExpanded" class="menu-item">Продукты</span>
+                <span *ngIf="isExpanded" class="menu-item">Товары</span>
             </mat-list-item>
 
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-icon mat-list-icon>shopping_basket</mat-icon>
-                        <span *ngIf="isExpanded" class="menu-item">Продукты2</span>
-                    </mat-expansion-panel-header>
-                    <mat-nav-list>
-                        <a mat-list-item>Item Three</a>
-                          <a mat-list-item>Item Four</a>
-                      </mat-nav-list>
-                </mat-expansion-panel>
-            </mat-accordion>
+            <mat-list-item [routerLink]="'products'" routerLinkActive="active">
+                <mat-icon mat-list-icon>shopping_basket</mat-icon>
+                <span *ngIf="isExpanded" class="menu-item">Коллекции</span>
+            </mat-list-item>
+
+            <mat-list-item [routerLink]="'products'" routerLinkActive="active">
+                <mat-icon mat-list-icon>shopping_basket</mat-icon>
+                <span *ngIf="isExpanded" class="menu-item">Заказы</span>
+            </mat-list-item>
+
         </mat-nav-list>
     </mat-sidenav>
       <!-- Content -->

@@ -7,14 +7,25 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
 
 import { WrapperComponent } from './wrapper/wrapper.component';
+import { CollectionsComponent } from './pages/collections/collections.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 
 
 @NgModule({
   declarations: [
-    WrapperComponent
+    WrapperComponent,
+    CollectionsComponent,
+    OrdersComponent,
+    ProductsComponent,
+    DashboardComponent,
+    LoginPageComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +35,8 @@ import { WrapperComponent } from './wrapper/wrapper.component';
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule
   ]
 })
 export class MainModule { }
