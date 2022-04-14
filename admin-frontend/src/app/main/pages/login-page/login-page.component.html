@@ -1,1 +1,22 @@
-<p>login-page works!</p>
+<mat-card>
+    <mat-card-title>Войти</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="loginForm">
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Логин</mat-label>
+                    <input matInput>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </div>
+        
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Пароль</mat-label>
+                    <input matInput type="password">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
