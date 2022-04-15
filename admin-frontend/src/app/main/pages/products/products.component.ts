@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { selectProducts } from 'src/app/state/products.selectors';
 
 @Component({
   selector: 'app-products',
@@ -6,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  products$ = this.store.select(selectProducts);
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
