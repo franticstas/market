@@ -7,7 +7,13 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { productsReducer } from './state/products.reducer';
 
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field'
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +22,15 @@ import { productsReducer } from './state/products.reducer';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({products: productsReducer})
+    StoreModule.forRoot({products: productsReducer}),
+
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

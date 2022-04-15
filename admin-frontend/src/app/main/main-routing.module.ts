@@ -14,17 +14,20 @@ const routes: Routes = [
     { 
         path: '',
         component: WrapperComponent,
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
         canActivate: [AuthGuard],
-        children: [
-            {
-                path: 'dashboard',
-                component: DashboardComponent
-            },
-            {
-                path: 'products',
-                component: ProductsComponent
-            }
-        ]
+        
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'products',
+        component: ProductsComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: '**',
