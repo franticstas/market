@@ -31,6 +31,10 @@ services:
     image: mongo
     container_name: market-db
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: ps123
+      MONGO_INITDB_DATABASE: marketDB
     volumes:
       - mongodb_api:/data/db
     networks:
