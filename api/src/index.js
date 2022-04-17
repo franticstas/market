@@ -22,13 +22,13 @@ async function main() {
 }
 
 const initUser = {
-  name: 'admin3',
-  email: 'admin3@market.ru',
+  name: 'admin',
+  email: 'admin@market.ru',
   password: '123456'
 }
 
 const createAdmin = async () => {
-  const checkUser = await User.findOne({ name: 'admin3'})
+  const checkUser = await User.findOne({ name: 'admin'})
   if (!checkUser) {
     const user = new User(initUser)
     const token = await user.generateAuthToken()
@@ -36,10 +36,9 @@ const createAdmin = async () => {
       await user.save()
     } catch(e) {
       console.log(e);
+      
     }
   }
-
-  console.log('sas2', checkUser);
 }
 
 createAdmin()

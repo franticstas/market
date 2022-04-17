@@ -14,6 +14,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field'
+import { AuthService } from './shared/services/auth.service';
+
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,6 +25,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     StoreModule.forRoot({products: productsReducer}),
 
     MatSidenavModule,
@@ -32,7 +36,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
     MatCardModule,
     MatFormFieldModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
