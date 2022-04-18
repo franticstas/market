@@ -31,7 +31,6 @@ const createAdmin = async () => {
   const checkUser = await User.findOne({ name: 'admin'})
   if (!checkUser) {
     const user = new User(initUser)
-    const token = await user.generateAuthToken()
     try {
       await user.save()
     } catch(e) {

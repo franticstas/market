@@ -15,14 +15,13 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) {}
 
     login(data: DataRequest) {
-        console.log('AuthService Data', data);
-        console.log(this.uri)
+        // console.log('AuthService Data', data);
+        // console.log(this.uri)
         
         this.http.post(this.uri + '/users/login', {...data})
         .subscribe((resp: any) => {
-           // this.router.navigate(['dashboard'])
-           console.log(resp)
-           localStorage.setItem('auth_token', resp.token)
+            localStorage.setItem('auth_token', resp.token)
+            this.router.navigate(['dashboard'])
         })
     }
 
@@ -31,6 +30,6 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        
+        return localStorage.getItem('auth_token') !== null;
     }
 }

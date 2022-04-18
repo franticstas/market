@@ -16,7 +16,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import { AuthService } from './shared/services/auth.service';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { TestService } from './shared/services/test.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -36,7 +38,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatFormFieldModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    AuthGuard,
+    AuthService,
+    TestService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
