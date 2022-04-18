@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { CategoriesComponent } from './pages/categories/categories.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 
@@ -27,6 +30,26 @@ const routes: Routes = [
     {
         path: 'products',
         component: ProductsComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'product',
+        component: ProductPageComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'orders',
+        component: OrdersComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'categories',
+        component: CategoriesComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'collections',
+        component: CategoriesComponent,
         canActivate: [AuthGuard],
     },
     {

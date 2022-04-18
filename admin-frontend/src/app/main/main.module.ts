@@ -19,6 +19,10 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import {MatButtonModule} from '@angular/material/button';
     OrdersComponent,
     ProductsComponent,
     DashboardComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    CategoriesComponent,
+    ProductPageComponent,
+    CategoryPageComponent,
+    OrderPageComponent
   ],
   imports: [
     CommonModule,

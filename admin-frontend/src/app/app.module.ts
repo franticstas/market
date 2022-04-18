@@ -19,9 +19,11 @@ import { AuthService } from './shared/services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { TestService } from './shared/services/test.service';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
