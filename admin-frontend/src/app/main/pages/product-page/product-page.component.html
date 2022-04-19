@@ -1,4 +1,38 @@
 <mat-card>
-    <mat-card-title>Actions Buttons</mat-card-title>
+    <form [formGroup]="productForm" (ngSubmit)="submit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Название товара</mat-label>
+            <input formControlName="name" matInput>
+        </mat-form-field>
 
+        <!-- <div>
+            <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <button mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+                <mat-icon>plus_one</mat-icon>
+            </button>
+        </div> -->
+
+        <div>
+            <button type="button" mat-fab color="accent" (click)="file.click()">
+                <mat-icon>plus_one</mat-icon>
+                <input formControlName="images" style="display:none;" #file type='file' accept='image/*' multiple (change)="preview($event)" />
+            </button>
+            <img *ngFor='let url of images'  [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Описание</mat-label>
+            <textarea formControlName="description" matInput></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Категория товара</mat-label>
+            <mat-select category="category">
+              <mat-option value="one">Первая категория</mat-option>
+              <mat-option value="two">Вторая категория</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary">Сохранить</button>
+    </form>
 </mat-card>

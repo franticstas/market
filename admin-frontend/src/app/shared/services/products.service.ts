@@ -9,4 +9,8 @@ export class ProductsService {
     // getProducts(): Observable<Array<Book>> {
     //     return 
     // }
+
+    saveProduct() {
+
+    }
 }
