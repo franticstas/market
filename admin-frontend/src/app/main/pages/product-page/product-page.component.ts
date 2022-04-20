@@ -14,7 +14,7 @@ export class ProductPageComponent implements OnInit {
     name : [''],
     description: [''],
     category: [''],
-    images: ['']
+    // images: ['']
   })
   constructor(private fb: FormBuilder, private http: HttpClient) { }
 

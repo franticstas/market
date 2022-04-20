@@ -2,12 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose')
 const {host, port, db} = require('./configuration')
 const userRouter = require('./routers/user')
+const productRouter = require('./routers/product')
 const User = require('./models/user')
 
 const app = express()
 
 app.use(express.json())
-app.use(userRouter)
+app.use(userRouter, productRouter)
 
 app.listen(port, () => {
     console.log(`Started api service on port: ${port}`);
