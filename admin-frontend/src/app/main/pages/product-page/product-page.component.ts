@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'app-product-page',
@@ -16,7 +17,8 @@ export class ProductPageComponent implements OnInit {
     category: [''],
     // images: ['']
   })
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+
+  constructor(private fb: FormBuilder, private productsService: ProductsService) { }
 
   ngOnInit(): void {
   }
@@ -38,11 +40,13 @@ export class ProductPageComponent implements OnInit {
   }
 
   submit() {
-    let testData:FormData = new FormData();
-    for (let i = 0; i < this.images.length; i++) {
+    // let testData:FormData = new FormData();
+    // for (let i = 0; i < this.images.length; i++) {
       
-    }
-    console.log(this.productForm.value);
-    
+    // }
+    // console.log(this.productForm.value);
+
+    const product = this.productForm.value;
+    this.productsService.createProduct(product)
   }
 }

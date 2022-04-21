@@ -24,20 +24,20 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }],
+    // tokens: [{
+    //     token: {
+    //         type: String,
+    //         required: true
+    //     }
+    // }],
 })
 
 userSchema.methods.generateAuthToken = async function() {
     const user = this
-    const token = jwt.sign({ _id: user._id.toString() }, 'verySecretKey', { expiresIn: '51s' })
+    const token = jwt.sign({ _id: user._id.toString() }, 'verySecretKey', { expiresIn: '50001s' })
 
-    user.tokens = user.tokens.concat({ token })
-    await user.save()
+    // user.tokens = user.tokens.concat({ token })
+    // await user.save()
     
     return token
 }
