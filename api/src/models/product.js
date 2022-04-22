@@ -14,6 +14,14 @@ const productSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    images:[
+        {
+            image: {
+                originalname: { type: String },
+                path: { type: String }
+            }
+        }
+    ]
 })
 
 const Product = mongoose.model('Product', productSchema)
