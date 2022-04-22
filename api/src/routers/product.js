@@ -3,8 +3,19 @@ const router = express.Router()
 const Product = require('../models/product')
 const auth = require('../middleware/auth')
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
 
+//const upload = multer({ dest: 'uploads/' })
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+})
+
+var upload = multer({ storage: storage })
 
 router.post('/products', auth, async (req, res) => {
     const product = new Product(req.body)
@@ -19,30 +30,15 @@ router.post('/products', auth, async (req, res) => {
 })
 
 router.post('/testimage', upload.array('product_images'), async (req, res) => {
-    console.log('BODY ',req.body);
-    console.log('----------------------************-------------------');
-    console.log('FILES', req.files);
-
-    // console.log(req.files.length);
-
     const product = new Product(req.body)
-
-    const imagesList = []
-
+    
     for(let i = 0; i < req.files.length; i++) {
-        console.log('FILES ', req.files[i]);
-        const image = {
-            originalname: req.files[i].originalname,
-            path: req.files[i].path
-        }
-
-        imagesList.push(image)
+        let image = {}
+        image.originalname = req.files[i].originalname;
+        image.path = req.files[i].path;
+        product.images = product.images.concat({ image })
     }
-
-    product['images'] = imagesList;
-
-    console.log('PRODUCT', product)
-
+  
     try {
         await product.save()
         res.status(201).send(product)

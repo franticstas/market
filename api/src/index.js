@@ -10,6 +10,8 @@ const app = express()
 app.use(express.json())
 app.use(userRouter, productRouter)
 
+app.use('/uploads', express.static('uploads'));
+
 app.listen(port, () => {
     console.log(`Started api service on port: ${port}`);
     console.log(`On host ${host}`);
