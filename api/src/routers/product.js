@@ -17,19 +17,19 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage })
 
-router.post('/products', auth, async (req, res) => {
-    const product = new Product(req.body)
+// router.post('/products', auth, async (req, res) => {
+//     const product = new Product(req.body)
 
-    try {
-        await product.save()
-        res.status(201).send(product)
-    } catch (e) {
-        //console.log('ERROR');
-        res.status(400).send(e)
-    }
-})
+//     try {
+//         await product.save()
+//         res.status(201).send(product)
+//     } catch (e) {
+//         //console.log('ERROR');
+//         res.status(400).send(e)
+//     }
+// })
 
-router.post('/testimage', upload.array('product_images'), async (req, res) => {
+router.post('/products', upload.array('product_images'), async (req, res) => {
     const product = new Product(req.body)
     
     for(let i = 0; i < req.files.length; i++) {

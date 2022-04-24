@@ -1,7 +1,9 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ProductsService } from 'src/app/shared/services/products.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-page',
@@ -9,44 +11,48 @@ import { ProductsService } from 'src/app/shared/services/products.service';
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
-  images : string[] = [];
+  imagesToUpload: Array<File> = [];
+  uri = environment.backendUrl;
+  imagesPreview: string[] = [];
 
   productForm = this.fb.group({
     name : [''],
     description: [''],
     category: [''],
-    // images: ['']
+    product_images: [''],
   })
 
-  constructor(private fb: FormBuilder, private productsService: ProductsService) { }
+  constructor(private fb: FormBuilder, private productsService: ProductsService, private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
-  preview(event: any) {
-    let fileList: FileList = event.target.files;
-    if (event.target.files && event.target.files[0]) {
-      var filesAmount = event.target.files.length;
+  imageChangeEvent(fileInput: any) {
+    this.imagesToUpload = <Array<File>>fileInput.target.files;
 
-      for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
-
-        reader.onload = (event:any) => {
-          this.images.push(event.target.result);
+    if (fileInput.target.files && fileInput.target.files[0]) {
+      for (let i = 0; i < fileInput.target.files.length; i++) {
+        const file = new FileReader();
+  
+        file.onload = (event:any) => {
+          this.imagesPreview.push(event.target.result);
         }
-        reader.readAsDataURL(event.target.files[i]);
-      }      
-    }
+        file.readAsDataURL(fileInput.target.files[i]);
+      }
+
   }
+}
 
   submit() {
-    // let testData:FormData = new FormData();
-    // for (let i = 0; i < this.images.length; i++) {
-      
-    // }
-    // console.log(this.productForm.value);
+    const newCreatedProductFormData = new FormData();
+    newCreatedProductFormData.append('name', this.productForm.controls['name'].value);
+    newCreatedProductFormData.append('description', this.productForm.controls['description'].value)
+    newCreatedProductFormData.append('category', this.productForm.controls['category'].value)
 
-    const product = this.productForm.value;
-    this.productsService.createProduct(product)
+    for(let img of this.imagesToUpload){
+      newCreatedProductFormData.append('product_images',img);
+    }
+    
+    this.http.post(this.uri + '/products', newCreatedProductFormData).subscribe()
   }
 }
