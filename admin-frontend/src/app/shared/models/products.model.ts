@@ -8,7 +8,7 @@ interface ProductCard {
     name: string;
     description: string;
     category: string;
-    //images: File;
+    images: string;
 }
 
 export {Product, ProductCard}

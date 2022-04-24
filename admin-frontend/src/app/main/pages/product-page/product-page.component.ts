@@ -28,7 +28,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   imageChangeEvent(fileInput: any) {
-    this.imagesToUpload = <Array<File>>fileInput.target.files;
+    this.imagesToUpload = <Array<File>> fileInput.target.files;
 
     if (fileInput.target.files && fileInput.target.files[0]) {
       for (let i = 0; i < fileInput.target.files.length; i++) {

@@ -11,6 +11,6 @@ export class ProductsService {
     constructor(private http: HttpClient) {}
 
     createProduct(product: Product) {
-        this.http.post(this.uri + '/products', product).subscribe()
+        return this.http.post(this.uri + '/products', product)
     }
 }
