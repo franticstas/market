@@ -2,7 +2,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { ProductsService } from 'src/app/shared/services/products.service';
+import { createProduct } from 'src/app/state/products.action';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,7 +24,7 @@ export class ProductPageComponent implements OnInit {
     product_images: [''],
   })
 
-  constructor(private fb: FormBuilder, private productsService: ProductsService, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private productsService: ProductsService, private http: HttpClient, private store: Store) { }
 
   ngOnInit(): void {
   }
@@ -44,15 +46,20 @@ export class ProductPageComponent implements OnInit {
 }
 
   submit() {
-    const newCreatedProductFormData = new FormData();
-    newCreatedProductFormData.append('name', this.productForm.controls['name'].value);
-    newCreatedProductFormData.append('description', this.productForm.controls['description'].value)
-    newCreatedProductFormData.append('category', this.productForm.controls['category'].value)
+    // const newCreatedProductFormData = new FormData();
+    // newCreatedProductFormData.append('name', this.productForm.controls['name'].value);
+    // newCreatedProductFormData.append('description', this.productForm.controls['description'].value)
+    // newCreatedProductFormData.append('category', this.productForm.controls['category'].value)
 
-    for(let img of this.imagesToUpload){
-      newCreatedProductFormData.append('product_images',img);
-    }
+    // for(let img of this.imagesToUpload){
+    //   newCreatedProductFormData.append('product_images',img);
+    // }
     
-    this.http.post(this.uri + '/products', newCreatedProductFormData).subscribe()
+    //this.http.post(this.uri + '/products', newCreatedProductFormData).subscribe()
+    const payload = {
+      ...this.productForm.value,
+      files: this.imagesToUpload
+    }
+    this.store.dispatch(createProduct(payload))
   }
 }

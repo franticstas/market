@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
 import { productsReducer } from './state/products.reducer';
+import { EffectsModule } from '@ngrx/effects';
+
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
@@ -20,6 +22,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { TestService } from './shared/services/test.service';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
+import { ProductsEffects } from './state/products.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +35,13 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot({products: productsReducer}),
+    EffectsModule.forRoot([ProductsEffects]),
+
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: true, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
 
     MatSidenavModule,
     MatListModule,

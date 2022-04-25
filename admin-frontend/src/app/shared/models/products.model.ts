@@ -1,14 +1,19 @@
-interface Product {
-    id : string;
-    name: string;
-    price: number;
+interface ImageI {
+    image: {
+        originalname: string,
+        path: string
+    },
+    _id: string
 }
 
-interface ProductCard {
+interface ProductI {
+    _id?: string;
     name: string;
     description: string;
     category: string;
-    images: string;
+    images: ImageI[];
+    price?: number;
 }
 
-export {Product, ProductCard}
+
+export {ProductI}
