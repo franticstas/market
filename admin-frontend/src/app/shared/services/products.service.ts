@@ -11,4 +11,8 @@ export class ProductsService {
     createProduct(product: any) {
         return this.http.post(this.uri + '/products', product)
     }
+
+    loadProducts() {
+        return this.http.get(this.uri + '/products/all')
+    }
 }

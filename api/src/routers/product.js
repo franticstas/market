@@ -48,5 +48,13 @@ router.post('/products', upload.array('product_images'), async (req, res) => {
     }
 })
 
+router.get('/products/all', async (req, res) => {
+    try {
+        const productsList = await Product.find({})
+        res.status(201).send(productsList)
+    } catch(e) {
+        res.status(400).send(e)
+    }
+})
 
 module.exports = router
