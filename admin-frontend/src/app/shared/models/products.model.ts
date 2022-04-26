@@ -1,4 +1,4 @@
-interface ImageI {
+interface IImage {
     image: {
         originalname: string,
         path: string
@@ -6,14 +6,14 @@ interface ImageI {
     _id: string
 }
 
-interface ProductI {
+interface IProduct {
     _id?: string;
     name: string;
     description: string;
     category: string;
-    images: ImageI[];
+    images: IImage[];
     price?: number;
 }
 
 
-export {ProductI}
+export {IProduct}

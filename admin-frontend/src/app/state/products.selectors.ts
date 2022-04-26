@@ -1,4 +1,4 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { ProductI } from '../shared/models/products.model';
+import { IProduct } from '../shared/models/products.model';
 
-export const selectProducts = createFeatureSelector<ReadonlyArray<ProductI>>('products')
+export const selectProducts = createFeatureSelector<ReadonlyArray<IProduct>>('products')

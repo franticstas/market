@@ -24,7 +24,7 @@ export class ProductPageComponent implements OnInit {
     product_images: [''],
   })
 
-  constructor(private fb: FormBuilder, private productsService: ProductsService, private http: HttpClient, private store: Store) { }
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ProductI } from '../shared/models/products.model';
+import { IProduct } from '../shared/models/products.model';
 
 export enum ProductActionTypes {
     Create = '[Product] Create',
@@ -12,12 +12,11 @@ export enum ProductActionTypes {
 
 export const createProduct = createAction(
     ProductActionTypes.Create,
-    props<{ product: ProductI, files: Array<File> }>()
+    props<{ product: IProduct, files: Array<File> }>()
 )
 
 export const createProductSuccess = createAction(
-    ProductActionTypes.CreateSuccess,
-    props<{ product: ProductI}>()
+    ProductActionTypes.CreateSuccess
 )
 
 export const createProductFailure = createAction(
@@ -25,13 +24,12 @@ export const createProductFailure = createAction(
 )
 
 export const loadProducts = createAction(
-    ProductActionTypes.Load,
-    props<{ product: ProductI, files: Array<File> }>()
+    ProductActionTypes.Load
 )
 
 export const loadProductsSuccess = createAction(
     ProductActionTypes.LoadSuccess,
-    props<{ product: ProductI}>()
+    props<{ productsList: IProduct[]}>()
 )
 
 export const loadProductsFailure = createAction(
