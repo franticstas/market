@@ -13,7 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { ProductsComponent } from './pages/products/products.component';
+//import { ProductsComponent } from './pages/products/products.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,20 +21,21 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { CategoriesComponent } from './pages/categories/categories.component';
-import { ProductPageComponent } from './pages/product-page/product-page.component';
+//import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { ProductsModule } from './pages/products/products.module';
 
 @NgModule({
   declarations: [
     WrapperComponent,
     CollectionsComponent,
     OrdersComponent,
-    ProductsComponent,
+    // ProductsComponent,
     DashboardComponent,
     LoginPageComponent,
     CategoriesComponent,
-    ProductPageComponent,
+   // ProductPageComponent,
     CategoryPageComponent,
     OrderPageComponent
   ],
@@ -52,7 +53,9 @@ import { OrderPageComponent } from './pages/order-page/order-page.component';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+
+    ProductsModule
   ]
 })
 export class MainModule { }

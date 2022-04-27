@@ -8,11 +8,11 @@ import { createProduct } from 'src/app/state/products.action';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-product-page',
-  templateUrl: './product-page.component.html',
-  styleUrls: ['./product-page.component.scss']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss']
 })
-export class ProductPageComponent implements OnInit {
+export class ProductComponent implements OnInit {
   imagesToUpload: Array<File> = [];
   uri = environment.backendUrl;
   imagesPreview: string[] = [];

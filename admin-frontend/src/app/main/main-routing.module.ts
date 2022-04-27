@@ -5,8 +5,9 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { ProductPageComponent } from './pages/product-page/product-page.component';
-import { ProductsComponent } from './pages/products/products.component';
+import { ProductsModule } from './pages/products/products.module';
+// import { ProductPageComponent } from './pages/product-page/product-page.component';
+// import { ProductsComponent } from './pages/products/products.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 
 
@@ -29,12 +30,7 @@ const routes: Routes = [
     },
     {
         path: 'products',
-        component: ProductsComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'product',
-        component: ProductPageComponent,
+        loadChildren: () => import('./pages/products/products.module').then(mod => mod.ProductsModule),
         canActivate: [AuthGuard],
     },
     {

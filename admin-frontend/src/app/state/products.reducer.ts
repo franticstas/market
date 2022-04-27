@@ -16,5 +16,7 @@ export const initialState: DataState = {
 
 export const productsReducer = createReducer(
     initialState,
-    on(ProductAction.loadProductsSuccess, (state, { productsList }) => ({...state, productsList}))
+    on(ProductAction.loadProducts, (state) => ({...state, loadingProducts: true})),
+    on(ProductAction.loadProductsSuccess, (state, { productsList }) => ({...state, productsList, loadingProducts: false})),
+    on(ProductAction.loadProductsFailure, (state) => ({...state, loadingProducts: false})),
 );
