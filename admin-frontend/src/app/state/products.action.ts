@@ -6,8 +6,8 @@ export enum ProductActionTypes {
     CreateSuccess = '[Product] Create Success',
     CreateFailure = '[Product] Create Failure ',
     Load = '[Product] Load Product',
-    LoadSuccess = '[Product] Create Success',
-    LoadFailure = '[Product] Create Failure '
+    LoadSuccess = '[Product] Load Success',
+    LoadFailure = '[Product] Load Failure '
 }
 
 export const createProduct = createAction(

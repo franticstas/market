@@ -16,10 +16,5 @@ export const initialState: DataState = {
 
 export const productsReducer = createReducer(
     initialState,
-    on(ProductAction.loadProductsSuccess, (state, { productsList }) => {
-      console.log(productsList);
-      
-     const t = {...state, productsList: productsList}
-     return t
-    })
-  );
+    on(ProductAction.loadProductsSuccess, (state, { productsList }) => ({...state, productsList}))
+);
