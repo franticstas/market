@@ -11,7 +11,7 @@ export class ProductPreviewComponent implements OnInit {
   // @Input() description = ''
   // @Input() images = []
   // @Input() category = ''
-  @Input() product: IProduct = []
+  //@Input() product: IProduct = []
 
   constructor() { }
 

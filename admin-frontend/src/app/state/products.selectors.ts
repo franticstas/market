@@ -14,8 +14,8 @@ import { DataState } from './products.reducer';
 // )
 
 export interface AppState {
-    products: DataState;
-  }
+  products: DataState;
+}
 
 const selectProducts = (state: AppState) => state.products
 
