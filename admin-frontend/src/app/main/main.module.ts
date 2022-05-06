@@ -25,6 +25,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { ProductsModule } from './pages/products/products.module';
+import { ContainerComponent } from './container/container.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProductsModule } from './pages/products/products.module';
     LoginPageComponent,
     CategoriesComponent,
    // ProductPageComponent,
+    ContainerComponent,
     CategoryPageComponent,
     OrderPageComponent
   ],
