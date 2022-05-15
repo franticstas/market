@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { IProduct }  from '../shared/models/products.model'
 import * as ProductAction from './products.action';
 
@@ -14,9 +14,13 @@ export const initialState: DataState = {
   sendingProduct: false
 }
 
-export const productsReducer = createReducer(
+const productsReducer = createReducer(
     initialState,
     on(ProductAction.loadProducts, (state) => ({...state, loadingProducts: true})),
     on(ProductAction.loadProductsSuccess, (state, { productsList }) => ({...state, productsList, loadingProducts: false})),
     on(ProductAction.loadProductsFailure, (state) => ({...state, loadingProducts: false})),
 );
+
+export function reducer(state: DataState | undefined, action: Action) {
+  return productsReducer(state, action);
+}

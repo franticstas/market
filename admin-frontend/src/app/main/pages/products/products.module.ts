@@ -8,7 +8,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { ProductComponent } from "./product/product.component";
-import { ProductsListComponent } from "./products-list/products.component";
+import { ProductsListComponent } from "./products-list/products-list.component";
 import { ProductsRoutingModule } from "./products-routing.module";
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 

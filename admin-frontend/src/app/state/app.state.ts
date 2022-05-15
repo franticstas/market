@@ -1,5 +1,7 @@
-import { Product } from "../shared/models/products.model";
+import { IProduct } from "../shared/models/products.model";
+import { ITest } from "../shared/models/test.model";
 
 export interface AppState {
-    products: ReadonlyArray<Product>
+    products: ReadonlyArray<IProduct>;
+    test: ReadonlyArray<ITest>
 }

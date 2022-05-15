@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
-import { productsReducer } from './state/products.reducer';
+// import { productsReducer } from './state/products.reducer';
+import * as fromProductsReducer from './state/products.reducer';
+import * as fromTestReducer from './main/pages/products/state/test.reducer'
 import { EffectsModule } from '@ngrx/effects';
 
 
@@ -34,7 +36,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot({products: productsReducer}),
+    StoreModule.forRoot({
+      products: fromProductsReducer.reducer,
+      test: fromTestReducer.reducer
+    }),
     EffectsModule.forRoot([ProductsEffects]),
 
     StoreDevtoolsModule.instrument({

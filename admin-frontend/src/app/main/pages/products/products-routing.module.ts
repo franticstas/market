@@ -4,7 +4,7 @@ import { AuthGuard } from "src/app/shared/guards/auth.guard";
 import { ContainerComponent } from "../../container/container.component";
 import { WrapperComponent } from "../../wrapper/wrapper.component";
 import { ProductComponent } from "./product/product.component";
-import { ProductsListComponent } from "./products-list/products.component";
+import { ProductsListComponent } from "./products-list/products-list.component";
 
 const routes: Routes = [
     {
