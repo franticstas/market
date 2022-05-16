@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IProduct } from '../shared/models/products.model';
+import { IProduct } from 'src/app/shared/models/products.model';
 
 export enum ProductActionTypes {
     Create = '[Product] Create',

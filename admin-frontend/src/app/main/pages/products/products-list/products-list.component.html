@@ -4,7 +4,7 @@
 
     <ul>
         <li *ngFor="let product of products$ | async">
-            <app-product-preview product>
+            <app-product-preview [product]='product'>
 
             </app-product-preview>
         </li>

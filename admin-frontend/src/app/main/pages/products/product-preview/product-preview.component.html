@@ -1,12 +1,12 @@
-<!-- <mat-card>
+<mat-card>
     <mat-card-header>
         <mat-card-title>
             {{product.name}}
         </mat-card-title>
     </mat-card-header>
 
-
-    <img *ngIf="product.images.length > 0; else amptyImg" mat-card-image [src]="product.images[0]">
+    <!-- <div>{{product.images[0]}}</div> -->
+    <img *ngIf="product.images && product.images.length > 0; else amptyImg" mat-card-image [src]="product.images[0].image?.path">
     <ng-template #amptyImg>
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
     </ng-template>
@@ -18,4 +18,4 @@
     <mat-card-footer>
         255р
     </mat-card-footer>
-</mat-card> -->
+</mat-card>

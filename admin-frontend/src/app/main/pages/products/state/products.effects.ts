@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from "rxjs";
 import { catchError, map, mergeMap, switchMap, tap } from "rxjs/operators";
-import { ProductsService } from "../shared/services/products.service";
+import { ProductsService } from "src/app/shared/services/products.service";
 import { ProductActionTypes } from './products.action'
 
 @Injectable()

@@ -7,15 +7,13 @@ import { IProduct } from 'src/app/shared/models/products.model';
   styleUrls: ['./product-preview.component.scss']
 })
 export class ProductPreviewComponent implements OnInit {
-  // @Input() name = ''
-  // @Input() description = ''
-  // @Input() images = []
-  // @Input() category = ''
-  //@Input() product: IProduct = []
+  @Input() product!: IProduct;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.product);
+    
   }
 
 }

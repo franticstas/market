@@ -5,6 +5,7 @@ import { ContainerComponent } from "../../container/container.component";
 import { WrapperComponent } from "../../wrapper/wrapper.component";
 import { ProductComponent } from "./product/product.component";
 import { ProductsListComponent } from "./products-list/products-list.component";
+import { ProductsResolver } from "./resolver/products.resolve";
 
 const routes: Routes = [
     {
@@ -14,7 +15,8 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                component:  ProductsListComponent
+                component:  ProductsListComponent,
+                resolve: { loaded: ProductsResolver }
             },
             {
                 path: 'create',

@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { StoreModule } from '@ngrx/store';
-// import { productsReducer } from './state/products.reducer';
-import * as fromProductsReducer from './state/products.reducer';
-import * as fromTestReducer from './main/pages/products/state/test.reducer'
+
+import * as fromProductsReducer from 'src/app/main/pages/products/state/products.reducer';
+
 import { EffectsModule } from '@ngrx/effects';
 
 
@@ -24,7 +24,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { TestService } from './shared/services/test.service';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
-import { ProductsEffects } from './state/products.effects';
+import { ProductsEffects } from 'src/app/main/pages/products/state/products.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
@@ -37,8 +37,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     HttpClientModule,
     StoreModule.forRoot({
-      products: fromProductsReducer.reducer,
-      test: fromTestReducer.reducer
+      products: fromProductsReducer.reducer
     }),
     EffectsModule.forRoot([ProductsEffects]),
 
