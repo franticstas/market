@@ -35,7 +35,6 @@ export class ProductsEffects {
         ofType(ProductActionTypes.Load),
         switchMap(() => {
             return this.productsService.loadProducts().pipe(
-                tap((data) => console.log(data)),
                 map((productsList) => ({type: ProductActionTypes.LoadSuccess, productsList})),
                 catchError(error => of({ type: ProductActionTypes.LoadFailure}))
             )

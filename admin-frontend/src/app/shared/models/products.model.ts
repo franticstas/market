@@ -16,4 +16,4 @@ interface IProduct {
 }
 
 
-export {IProduct}
+export {IProduct, IImage}

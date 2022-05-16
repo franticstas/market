@@ -9,6 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { CollectionsComponent } from './pages/collections/collections.component';
@@ -56,6 +58,8 @@ import { ContainerComponent } from './container/container.component';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
 
     ProductsModule
   ]

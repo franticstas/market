@@ -1,14 +1,40 @@
-<p>products works!</p>
-
-<button (click)="getProducts()">OK</button>
-
-    <ul>
+    <h1>Список товаров</h1>
+    <!-- <ul>
         <li *ngFor="let product of products$ | async">
             <app-product-preview [product]='product'>
 
             </app-product-preview>
         </li>
-    </ul>
+    </ul> -->
 
+    <div>
+        <table mat-table [dataSource]="dataSource">
 
-<!-- <button (click)="getSelect()">TWO</button> -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Название товара</th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="images">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Фото товара</th>
+                <td mat-cell *matCellDef="let row"> 
+                    <ul>
+                        <li *ngFor="let img if row.images">
+                            <img src="" alt="">
+                        </li>
+                    </ul>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Описание товара</th>
+                <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Описание товара</th>
+                <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container> -->
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator> -->
+    </div>

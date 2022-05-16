@@ -12,8 +12,4 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  test() {
-    this.testService.testJWT()
-  }
 }
