@@ -33,7 +33,7 @@ export class ProductsListComponent implements OnInit {
     // this.products.forEach()
     this.dataSource = new MatTableDataSource(this.products)
   }
-
+  // TODO: https://blog.angular-university.io/angular-material-data-table/
   createDataTable(product: IProduct): ProductDataTable {
     return {
       name: product.name,
