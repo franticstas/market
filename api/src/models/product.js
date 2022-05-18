@@ -9,10 +9,6 @@ const productSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    category: {
-        type: String,
-        trim: true,
-    },
     images:[
         {
             image: {
@@ -20,7 +16,27 @@ const productSchema = new mongoose.Schema({
                 path: { type: String }
             }
         }
-    ]
+    ],
+    price : {
+        type: Number,
+        default:0
+    },
+    countInStock: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 255
+    },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+      },
+    subCategory: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'SubCategory',
+        required: false
+    },
 })
 
 const Product = mongoose.model('Product', productSchema)

@@ -4,8 +4,6 @@ const Product = require('../models/product')
 const auth = require('../middleware/auth')
 const multer  = require('multer')
 
-//const upload = multer({ dest: 'uploads/' })
-
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './uploads')
@@ -16,18 +14,6 @@ var storage = multer.diskStorage({
 })
 
 var upload = multer({ storage: storage })
-
-// router.post('/products', auth, async (req, res) => {
-//     const product = new Product(req.body)
-
-//     try {
-//         await product.save()
-//         res.status(201).send(product)
-//     } catch (e) {
-//         //console.log('ERROR');
-//         res.status(400).send(e)
-//     }
-// })
 
 router.post('/products', upload.array('product_images'), async (req, res) => {
     const product = new Product(req.body)

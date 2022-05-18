@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const {host, port, db} = require('./configuration')
 const userRouter = require('./routers/user')
 const productRouter = require('./routers/product')
+const categoryRouter = require('./routers/category')
 const User = require('./models/user')
 
 const app = express()

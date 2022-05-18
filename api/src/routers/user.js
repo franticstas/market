@@ -27,8 +27,4 @@ router.post('/users/login', async (req, res) => {
     }
 })
 
-router.get('/test', (req, res) => {
-    res.send('TESK OK!!!')
-})
-
 module.exports = router
