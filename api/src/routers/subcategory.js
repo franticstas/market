@@ -14,4 +14,13 @@ router.post('/subcategory', async (req, res) => {
     }
 })
 
+router.get('/subcategory/all', async (req, res) => {
+    try {
+        const subcategoryList = await SubCategory.find({})
+        res.status(201).send(subcategoryList)
+    } catch(e) {
+        res.status(400).send(e)
+    }
+})
+
 module.exports = router
