@@ -11,6 +11,7 @@ import { ProductComponent } from "./product/product.component";
 import { ProductsListComponent } from "./products-list/products-list.component";
 import { ProductsRoutingModule } from "./products-routing.module";
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
+import { MatTableModule } from '@angular/material/table'  
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { ProductPreviewComponent } from './product-preview/product-preview.compo
         MatSelectModule,
         MatInputModule,
         MatButtonModule,
+        MatTableModule
     ]
 })
 export class ProductsModule { }
