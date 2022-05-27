@@ -23,7 +23,6 @@ export class ProductsListComponent implements OnInit {
     this.store.select(selectProductsList).subscribe( products => {
       this.dataSource = products;
     });
-
   }
 
 }
