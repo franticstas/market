@@ -41,6 +41,10 @@ export class ProductsEffects {
         })
     ));
 
+    loadProductById$ = createEffect(() => this.actions$.pipe(
+        ofType(ProductActionTypes.LoadById)
+    ))
+
     constructor(
         private actions$: Actions,
         private productsService: ProductsService

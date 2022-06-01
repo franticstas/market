@@ -15,4 +15,8 @@ export class ProductsService {
     loadProducts() {
         return this.http.get(this.uri + '/products/all')
     }
+
+    loadProductById(id: string) {
+        return this.http.get(this.uri + '/products/' + id)
+    }
 }

@@ -5,9 +5,12 @@ export enum ProductActionTypes {
     Create = '[Product] Create',
     CreateSuccess = '[Product] Create Success',
     CreateFailure = '[Product] Create Failure ',
-    Load = '[Product] Load Product',
-    LoadSuccess = '[Product] Load Success',
-    LoadFailure = '[Product] Load Failure '
+    Load = '[Product] Load Products',
+    LoadSuccess = '[Product] Load Products Success',
+    LoadFailure = '[Product] Load Products Failure ',
+    LoadById = '[Product] Load Product By Id',
+    LoadByIdSuccess = '[Product] Load Product By Id Success',
+    LoadByIdFailure = '[Product] Load Product By Id Failure '
 }
 
 export const createProduct = createAction(
@@ -33,5 +36,18 @@ export const loadProductsSuccess = createAction(
 )
 
 export const loadProductsFailure = createAction(
+    ProductActionTypes.LoadFailure
+)
+
+export const loadProductById = createAction(
+    ProductActionTypes.Load
+)
+
+export const loadProductByIdSuccess = createAction(
+    ProductActionTypes.LoadSuccess,
+    props<{ productsList: IProduct}>()
+)
+
+export const loadProductByIdFailure = createAction(
     ProductActionTypes.LoadFailure
 )

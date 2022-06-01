@@ -3,7 +3,9 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { createProduct } from 'src/app/main/pages/products/state/products.action';
+import { IProduct } from 'src/app/shared/models/products.model';
 import { environment } from 'src/environments/environment';
+import { ProductsState, selectProduct } from '../state/products.selectors';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +16,8 @@ export class ProductComponent implements OnInit {
   imagesToUpload: Array<File> = [];
   uri = environment.backendUrl;
   imagesPreview: string[] = [];
-  id?: string;
+  id: string = '';
+  product!: IProduct;
 
   productForm = this.fb.group({
     name : [''],
@@ -25,12 +28,18 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store,
     private route: ActivatedRoute,
+    private store: Store<ProductsState>
   ) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id']
+    this.id = this.route.snapshot.params['id'];
+
+    this.store.select(selectProduct, {id: this.id}).subscribe( product => {
+      this.product = product[0];
+      console.log(this.product);
+      
+    });
   }
 
   imageChangeEvent(fileInput: any) {
