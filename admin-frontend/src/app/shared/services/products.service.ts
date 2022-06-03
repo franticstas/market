@@ -17,6 +17,8 @@ export class ProductsService {
     }
 
     loadProductById(id: string) {
+        console.log('******************', id);
+        
         return this.http.get(this.uri + '/products/' + id)
     }
 }

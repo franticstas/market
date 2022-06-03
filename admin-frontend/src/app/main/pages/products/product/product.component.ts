@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { createProduct } from 'src/app/main/pages/products/state/products.action';
+import { createProduct, loadProductById } from 'src/app/main/pages/products/state/products.action';
 import { IProduct } from 'src/app/shared/models/products.model';
 import { environment } from 'src/environments/environment';
 import { ProductsState, selectProduct } from '../state/products.selectors';
@@ -34,12 +34,22 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-
-    this.store.select(selectProduct, {id: this.id}).subscribe( product => {
-      this.product = product[0];
-      console.log(this.product);
+    console.log(1);
+    
+    if (this.id.length > 0) {
+      console.log(2);
       
-    });
+      const id = this.id
+      this.store.dispatch(loadProductById({id}))
+      console.log(3);
+      
+    }
+
+    // this.store.select(selectProduct, {id: this.id}).subscribe( product => {
+    //   this.product = product[0];
+    //   console.log(this.product);
+      
+    // });
   }
 
   imageChangeEvent(fileInput: any) {

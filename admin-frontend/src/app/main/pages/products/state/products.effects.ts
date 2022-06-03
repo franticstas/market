@@ -42,7 +42,13 @@ export class ProductsEffects {
     ));
 
     loadProductById$ = createEffect(() => this.actions$.pipe(
-        ofType(ProductActionTypes.LoadById)
+        ofType(ProductActionTypes.LoadById),
+        switchMap((action) => {
+            return this.productsService.loadProductById(action).pipe(
+                map((product) => ({type: ProductActionTypes.LoadByIdSuccess, product})),
+                catchError(error => of({type: ProductActionTypes.LoadByIdFailure}))
+            )
+        })
     ))
 
     constructor(
