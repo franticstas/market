@@ -22,7 +22,7 @@ export const isSendingProduct = createSelector(
   (state: ProductsDataState) => state.sendingProduct
 )
 
-export const selectProduct = createSelector(
+export const selectLoadedProduct = createSelector(
   selectProducts,
-  (state: ProductsDataState, props: {id: string}) => state.productsList.filter(product => product._id === props.id)
+  (state: ProductsDataState) => state.loadedProduct
 )

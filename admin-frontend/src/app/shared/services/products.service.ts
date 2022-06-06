@@ -16,9 +16,7 @@ export class ProductsService {
         return this.http.get(this.uri + '/products/all')
     }
 
-    loadProductById(id: string) {
-        console.log('******************', id);
-        
+    loadProductById(id: string) {        
         return this.http.get(this.uri + '/products/' + id)
     }
 }

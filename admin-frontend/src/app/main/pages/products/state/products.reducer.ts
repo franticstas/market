@@ -6,12 +6,14 @@ export interface ProductsDataState {
   productsList: IProduct[];
   loadingProducts: boolean;
   sendingProduct: boolean;
+  loadedProduct: IProduct | null;
 }
 
 export const initialState: ProductsDataState = {
   productsList: [],
   loadingProducts: false,
-  sendingProduct: false
+  sendingProduct: false,
+  loadedProduct: null
 }
 
 const productsReducer = createReducer(
@@ -19,6 +21,7 @@ const productsReducer = createReducer(
     on(ProductAction.loadProducts, (state) => ({...state, loadingProducts: true})),
     on(ProductAction.loadProductsSuccess, (state, { productsList }) => ({...state, productsList, loadingProducts: false})),
     on(ProductAction.loadProductsFailure, (state) => ({...state, loadingProducts: false})),
+    on(ProductAction.loadProductByIdSuccess, (state, { loadedProduct }) => ({ ...state, loadedProduct }))
 );
 
 export function reducer(state: ProductsDataState | undefined, action: Action) {

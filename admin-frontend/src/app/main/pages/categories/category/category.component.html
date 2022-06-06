@@ -1,0 +1,21 @@
+<mat-card>
+    <form [formGroup]="categoryForm" (ngSubmit)="submit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Название категории</mat-label>
+            <input formControlName="name" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Описание</mat-label>
+            <textarea formControlName="description" matInput></textarea>
+        </mat-form-field>
+
+        <div>
+            <button type="button" mat-fab color="accent" (click)="file.click()">
+                <mat-icon>plus_one</mat-icon>
+                <input formControlName="category_image" style="display:none;" #file type='file' accept='image/*' (change)="imageChangeEvent($event)" />
+            </button>
+            <img *ngIf="imagePreview" [src]="imagePreview" height="150" width="200px" style="margin: 3px;"> <br/>
+        </div>
+    </form>
+</mat-card>

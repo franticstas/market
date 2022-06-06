@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { createProduct, loadProductById } from 'src/app/main/pages/products/state/products.action';
 import { IProduct } from 'src/app/shared/models/products.model';
 import { environment } from 'src/environments/environment';
-import { ProductsState, selectProduct } from '../state/products.selectors';
+import { ProductsState, selectLoadedProduct } from '../state/products.selectors';
 
 @Component({
   selector: 'app-product',
@@ -18,13 +19,15 @@ export class ProductComponent implements OnInit {
   imagesPreview: string[] = [];
   id: string = '';
   product!: IProduct;
+  subscription!: Subscription;
+  productForm!: FormGroup;
 
-  productForm = this.fb.group({
-    name : [''],
-    description: [''],
-    category: [''],
-    product_images: [''],
-  })
+  // productForm = this.fb.group({
+  //   name : [''],
+  //   description: [''],
+  //   category: [''],
+  //   product_images: [''],
+  // })
 
   constructor(
     private fb: FormBuilder,
@@ -34,22 +37,19 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    console.log(1);
+    this.productForm = this.fb.group({
+      _id: [''],
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      category: ['', Validators.required],
+      images: ['', Validators.required],
+      price: ['', Validators.required]
+    })
     
     if (this.id.length > 0) {
-      console.log(2);
-      
       const id = this.id
       this.store.dispatch(loadProductById({id}))
-      console.log(3);
-      
     }
-
-    // this.store.select(selectProduct, {id: this.id}).subscribe( product => {
-    //   this.product = product[0];
-    //   console.log(this.product);
-      
-    // });
   }
 
   imageChangeEvent(fileInput: any) {

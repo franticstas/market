@@ -5,6 +5,8 @@ import { catchError, map, mergeMap, switchMap, tap } from "rxjs/operators";
 import { ProductsService } from "src/app/shared/services/products.service";
 import { ProductActionTypes } from './products.action'
 
+export type LoadProductByIdType = {id: string, type: ProductActionTypes.LoadById }
+
 @Injectable()
 export class ProductsEffects {
 
@@ -43,9 +45,9 @@ export class ProductsEffects {
 
     loadProductById$ = createEffect(() => this.actions$.pipe(
         ofType(ProductActionTypes.LoadById),
-        switchMap((action) => {
+        switchMap((action: LoadProductByIdType) => {
             return this.productsService.loadProductById(action.id).pipe(
-                map((product) => ({type: ProductActionTypes.LoadByIdSuccess, product})),
+                map((loadedProduct) => ({type: ProductActionTypes.LoadByIdSuccess, loadedProduct})),
                 catchError(error => of({type: ProductActionTypes.LoadByIdFailure}))
             )
         })

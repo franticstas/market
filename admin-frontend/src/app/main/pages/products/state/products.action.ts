@@ -46,7 +46,7 @@ export const loadProductById = createAction(
 
 export const loadProductByIdSuccess = createAction(
     ProductActionTypes.LoadByIdSuccess,
-    props<{ product: IProduct}>()
+    props<{ loadedProduct: IProduct}>()
 )
 
 export const loadProductByIdFailure = createAction(

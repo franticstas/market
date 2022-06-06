@@ -14,10 +14,7 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) {}
 
-    login(data: DataRequest) {
-        // console.log('AuthService Data', data);
-        // console.log(this.uri)
-        
+    login(data: DataRequest) {        
         this.http.post(this.uri + '/users/login', {...data})
         .subscribe((resp: any) => {
             localStorage.setItem('auth_token', resp.token)
