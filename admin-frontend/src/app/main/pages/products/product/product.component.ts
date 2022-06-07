@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { createProduct, loadProductById } from 'src/app/main/pages/products/state/products.action';
-import { IProduct } from 'src/app/shared/models/products.model';
+import { IImage, IProduct } from 'src/app/shared/models/products.model';
 import { environment } from 'src/environments/environment';
 import { ProductsState, selectLoadedProduct } from '../state/products.selectors';
 
@@ -21,6 +21,8 @@ export class ProductComponent implements OnInit {
   product!: IProduct;
   subscription!: Subscription;
   productForm!: FormGroup;
+  isUpdateProduct = false;
+  loadImages: IImage[] = [];
 
   // productForm = this.fb.group({
   //   name : [''],
@@ -42,13 +44,26 @@ export class ProductComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      images: ['', Validators.required],
+      product_images: ['', Validators.required],
       price: ['', Validators.required]
     })
     
     if (this.id.length > 0) {
-      const id = this.id
+      const id = this.id;
+      this.isUpdateProduct = true;
       this.store.dispatch(loadProductById({id}))
+      this.store.select(selectLoadedProduct).subscribe(product => {
+        if (product) {
+          const loadProduct = {...product};
+
+          if (product.images) {
+            this.loadImages = product.images;
+            delete loadProduct.images;
+          }
+
+          this.productForm.patchValue({...loadProduct, product_images: ''})          
+        }
+      })
     }
   }
 
@@ -68,10 +83,14 @@ export class ProductComponent implements OnInit {
   }
 
   submit() {
-    const payload = {
-      ...this.productForm.value,
-      files: this.imagesToUpload
+    if (this.isUpdateProduct) {
+
+    } else {
+      const payload = {
+        ...this.productForm.value,
+        files: this.imagesToUpload
+      }
+      this.store.dispatch(createProduct(payload))
     }
-    this.store.dispatch(createProduct(payload))
   }
 }

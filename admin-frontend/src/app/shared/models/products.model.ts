@@ -11,7 +11,7 @@ interface IProduct {
     name: string;
     description: string;
     category: string;
-    images: IImage[];
+    images?: IImage[];
     price?: number;
 }
 
