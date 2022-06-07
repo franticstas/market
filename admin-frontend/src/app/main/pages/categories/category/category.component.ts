@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { createCategory } from '../state/categories.action';
 
 @Component({
   selector: 'app-category',
@@ -11,7 +13,10 @@ export class CategoryComponent implements OnInit {
   imageToUpload!: File;
   imagePreview = '';
 
-  constructor(private fb: FormBuilder,) { }
+  constructor(
+    private fb: FormBuilder,
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
 
@@ -38,6 +43,11 @@ export class CategoryComponent implements OnInit {
   }
 
   submit() {
-
+    const payload = {
+      ...this.categoryForm.value,
+      file: {...this.imageToUpload}
+    }
+    
+    this.store.dispatch(createCategory(payload))
   }
 }

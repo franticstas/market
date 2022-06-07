@@ -56,5 +56,5 @@ export class ProductsEffects {
     constructor(
         private actions$: Actions,
         private productsService: ProductsService
-      ) {}
+    ) {}
 }

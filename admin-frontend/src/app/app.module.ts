@@ -26,6 +26,7 @@ import { TestService } from './shared/services/test.service';
 import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 import { ProductsEffects } from 'src/app/main/pages/products/state/products.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CategoriesEffects } from './main/pages/categories/state/categories.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot({
       products: fromProductsReducer.reducer
     }),
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forRoot([ProductsEffects, CategoriesEffects]),
 
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

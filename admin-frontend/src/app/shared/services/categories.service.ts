@@ -9,7 +9,7 @@ export class CategoriesService {
 
     constructor(private http: HttpClient) {}
 
-    createProduct(category: ICategory) {
+    createCategory(category: any) {
         return this.http.post(this.uri + '/categories', category)
     }
 }
