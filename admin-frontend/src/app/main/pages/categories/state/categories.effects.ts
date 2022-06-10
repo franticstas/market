@@ -13,10 +13,7 @@ export class CategoriesEffects {
             const newCreatedCategoryFormData = new FormData();
             newCreatedCategoryFormData.append('name', category.name);
             newCreatedCategoryFormData.append('description', category.description);
-            newCreatedCategoryFormData.append('category_image', category.file[0]);
-
-            console.log('newCreatedCategoryFormData', newCreatedCategoryFormData);
-            
+            newCreatedCategoryFormData.append('category_image', category.file[0]);            
 
             return this.categoriesService.createCategory(newCreatedCategoryFormData)
                 .pipe(
