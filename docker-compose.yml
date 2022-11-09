@@ -32,8 +32,6 @@ services:
     image: mongo
     container_name: market-db
     restart: always
-
-
     volumes:
       - mongodb_api:/data/db
     networks:
