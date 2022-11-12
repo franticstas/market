@@ -10,12 +10,12 @@ import * as fromProductsReducer from 'src/app/main/pages/products/state/products
 
 import { EffectsModule } from '@ngrx/effects'
 
-import { MatSidenavModule } from '@angular/material/sidenav'
-import { MatListModule } from '@angular/material/list'
-import { MatIconModule } from '@angular/material/icon'
-import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatExpansionModule } from '@angular/material/expansion'
-import { MatCardModule } from '@angular/material/card'
+// import { MatSidenavModule } from '@angular/material/sidenav'
+// import { MatListModule } from '@angular/material/list'
+// import { MatIconModule } from '@angular/material/icon'
+// import { MatToolbarModule } from '@angular/material/toolbar'
+// import { MatExpansionModule } from '@angular/material/expansion'
+// import { MatCardModule } from '@angular/material/card'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { AuthService } from './shared/services/auth.service'
 
@@ -26,6 +26,8 @@ import { ProductCardComponent } from './shared/components/product-card/product-c
 import { ProductsEffects } from 'src/app/main/pages/products/state/products.effects'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { CategoriesEffects } from './main/pages/categories/state/categories.effects'
+import { LayoutModule } from './layout/layout.module'
+
 @NgModule({
     declarations: [AppComponent, ProductCardComponent],
     imports: [
@@ -44,12 +46,14 @@ import { CategoriesEffects } from './main/pages/categories/state/categories.effe
             autoPause: true, // Pauses recording actions and state changes when the extension window is not open
         }),
 
-        MatSidenavModule,
-        MatListModule,
-        MatIconModule,
-        MatToolbarModule,
-        MatExpansionModule,
-        MatCardModule,
+        LayoutModule,
+
+        // MatSidenavModule,
+        // MatListModule,
+        // MatIconModule,
+        // MatToolbarModule,
+        // MatExpansionModule,
+        // MatCardModule,
         MatFormFieldModule,
     ],
     providers: [

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 
 @Component({
-    selector: 'app-clear-layout',
-    templateUrl: './clear-layout.component.html',
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClearLayoutComponent implements OnInit {
+export class DashboardComponent implements OnInit {
     constructor() {}
 
     ngOnInit(): void {}
