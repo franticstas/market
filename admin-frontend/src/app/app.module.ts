@@ -6,29 +6,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AuthGuard } from './shared/guards/auth.guard'
 import { StoreModule } from '@ngrx/store'
 
-import * as fromProductsReducer from 'src/app/pages/products/store/reducers/products.reducer'
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { EffectsModule } from '@ngrx/effects'
 
-// import { MatSidenavModule } from '@angular/material/sidenav'
-// import { MatListModule } from '@angular/material/list'
-// import { MatIconModule } from '@angular/material/icon'
-// import { MatToolbarModule } from '@angular/material/toolbar'
-// import { MatExpansionModule } from '@angular/material/expansion'
-// import { MatCardModule } from '@angular/material/card'
-import { MatFormFieldModule } from '@angular/material/form-field'
+import * as fromProductsReducer from 'src/app/pages/products/store/reducers/products.reducer'
+
 import { AuthService } from './shared/services/auth.service'
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { TestService } from './shared/services/test.service'
 import { ProductCardComponent } from './shared/components/product-card/product-card.component'
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { CategoriesEffects } from './mainDEL/pages/categories/state/categories.effects'
-// import { LayoutModule } from './layout/layout.module'
+
 import { ProductsEffects } from './pages/products/store/effects/products.effects'
-import { MaterialModule } from './shared/modules/material.module'
+import { LayoutModule } from './layout/layout.module'
 
 @NgModule({
     declarations: [AppComponent, ProductCardComponent],
@@ -47,16 +40,7 @@ import { MaterialModule } from './shared/modules/material.module'
             logOnly: true, // Restrict extension to log-only mode
             autoPause: true, // Pauses recording actions and state changes when the extension window is not open
         }),
-
-        // LayoutModule,
-
-        // MatSidenavModule,
-        // MatListModule,
-        // MatIconModule,
-        // MatToolbarModule,
-        // MatExpansionModule,
-        // MatCardModule,
-        MatFormFieldModule,
+        LayoutModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
