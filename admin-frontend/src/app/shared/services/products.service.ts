@@ -1,14 +1,14 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { environment } from 'src/environments/environment'
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
-    uri = environment.backendUrl;
-    
+    uri = environment.backendUrl
+
     constructor(private http: HttpClient) {}
 
-    createProduct(product: any) {
+    createProduct(product: FormData) {
         return this.http.post(this.uri + '/products', product)
     }
 
@@ -16,7 +16,7 @@ export class ProductsService {
         return this.http.get(this.uri + '/products/all')
     }
 
-    loadProductById(id: string) {        
+    loadProductById(id: string) {
         return this.http.get(this.uri + '/products/' + id)
     }
 }

@@ -15,23 +15,23 @@ import { MainRoutingModule } from './main-routing.module'
 // import { MatButtonModule } from '@angular/material/button'
 // import { MatSelectModule } from '@angular/material/select'
 
-import { WrapperComponent } from './wrapper/wrapper.component'
+// import { WrapperComponent } from './wrapper/wrapper.component'
 import { CollectionsComponent } from './pages/collections/collections.component'
 import { OrdersComponent } from './pages/orders/orders.component'
-import { DashboardComponent } from './pages/dashboard/dashboard.component'
+// import { DashboardComponent } from './pages/dashboard/dashboard.component'
 // import { LoginPageComponent } from './pages/login-page/login-page.component'
 // import { ReactiveFormsModule } from '@angular/forms'
 import { CategoryPageComponent } from './pages/category-page/category-page.component'
 import { OrderPageComponent } from './pages/order-page/order-page.component'
-import { ProductsModule } from './pages/products/products.module'
+// import { ProductsModule } from './pages/products/products.module'
 import { ContainerComponent } from './container/container.component'
 
 @NgModule({
     declarations: [
-        WrapperComponent,
+        // WrapperComponent,
         CollectionsComponent,
         OrdersComponent,
-        DashboardComponent,
+        // DashboardComponent,
         // LoginPageComponent,
         ContainerComponent,
         CategoryPageComponent,
@@ -55,7 +55,7 @@ import { ContainerComponent } from './container/container.component'
         // MatTableModule,
         // MatPaginatorModule,
 
-        ProductsModule,
+        // ProductsModule,
     ],
 })
 export class MainModule {}

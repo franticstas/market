@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
-import { IProduct } from 'src/app/shared/models/products.model';
+import { createAction, props } from '@ngrx/store'
+import { IProduct } from 'src/app/shared/types/products.interface'
 
 export enum ProductActionTypes {
     Create = '[Product] Create',
@@ -10,12 +10,12 @@ export enum ProductActionTypes {
     LoadFailure = '[Product] Load Products Failure ',
     LoadById = '[Product] Load Product By Id',
     LoadByIdSuccess = '[Product] Load Product By Id Success',
-    LoadByIdFailure = '[Product] Load Product By Id Failure '
+    LoadByIdFailure = '[Product] Load Product By Id Failure ',
 }
 
 export const createProduct = createAction(
     ProductActionTypes.Create,
-    props<{ product: IProduct, files: Array<File> }>()
+    props<{ product: IProduct; files: Array<File> }>()
 )
 
 export const createProductSuccess = createAction(
@@ -26,27 +26,23 @@ export const createProductFailure = createAction(
     ProductActionTypes.CreateFailure
 )
 
-export const loadProducts = createAction(
-    ProductActionTypes.Load
-)
+export const loadProducts = createAction(ProductActionTypes.Load)
 
 export const loadProductsSuccess = createAction(
     ProductActionTypes.LoadSuccess,
-    props<{ productsList: IProduct[]}>()
+    props<{ productsList: IProduct[] }>()
 )
 
-export const loadProductsFailure = createAction(
-    ProductActionTypes.LoadFailure
-)
+export const loadProductsFailure = createAction(ProductActionTypes.LoadFailure)
 
 export const loadProductById = createAction(
     ProductActionTypes.LoadById,
-    props<{id: string}>()
+    props<{ id: string }>()
 )
 
 export const loadProductByIdSuccess = createAction(
     ProductActionTypes.LoadByIdSuccess,
-    props<{ loadedProduct: IProduct}>()
+    props<{ loadedProduct: IProduct }>()
 )
 
 export const loadProductByIdFailure = createAction(

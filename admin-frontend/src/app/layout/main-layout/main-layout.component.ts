@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayoutComponent implements OnInit {
+    isExpanded: boolean = false
     constructor() {}
 
     ngOnInit(): void {}

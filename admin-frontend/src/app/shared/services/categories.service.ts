@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { ICategory } from '../models/categories.model';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { environment } from 'src/environments/environment'
+import { ICategory } from '../types/categories.interface'
 
 @Injectable({ providedIn: 'root' })
 export class CategoriesService {
-    uri = environment.backendUrl;
+    uri = environment.backendUrl
 
     constructor(private http: HttpClient) {}
 

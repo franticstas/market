@@ -1,5 +1,5 @@
-import { createAction, props } from "@ngrx/store";
-import { ICategory } from "src/app/shared/models/categories.model";
+import { createAction, props } from '@ngrx/store'
+import { ICategory } from 'src/app/shared/types/categories.interface'
 
 export enum CategoriesActionTypes {
     Create = '[Categories] Create',
@@ -10,12 +10,12 @@ export enum CategoriesActionTypes {
     LoadFailure = '[Categories] Load Categories Failure ',
     LoadById = '[Categories] Load Category By Id',
     LoadByIdSuccess = '[Categories] Load Category By Id Success',
-    LoadByIdFailure = '[Categories] Load Category By Id Failure '
+    LoadByIdFailure = '[Categories] Load Category By Id Failure ',
 }
 
 export const createCategory = createAction(
     CategoriesActionTypes.Create,
-    props<{ product: ICategory, file: File }>()
+    props<{ product: ICategory; file: File }>()
 )
 
 export const createCategorySuccess = createAction(
@@ -26,13 +26,11 @@ export const createCategoryFailure = createAction(
     CategoriesActionTypes.CreateFailure
 )
 
-export const loadCategories = createAction(
-    CategoriesActionTypes.Load
-)
+export const loadCategories = createAction(CategoriesActionTypes.Load)
 
 export const loadCategoriesSuccess = createAction(
     CategoriesActionTypes.LoadSuccess,
-    props<{ productsList: ICategory[]}>()
+    props<{ productsList: ICategory[] }>()
 )
 
 export const loadCategoriesFailure = createAction(
@@ -41,12 +39,12 @@ export const loadCategoriesFailure = createAction(
 
 export const loadCategoryById = createAction(
     CategoriesActionTypes.LoadById,
-    props<{id: string}>()
+    props<{ id: string }>()
 )
 
 export const loadCategoryByIdSuccess = createAction(
     CategoriesActionTypes.LoadByIdSuccess,
-    props<{ loadedProduct: ICategory}>()
+    props<{ loadedProduct: ICategory }>()
 )
 
 export const loadCategoryByIdFailure = createAction(

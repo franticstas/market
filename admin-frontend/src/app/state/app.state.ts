@@ -1,4 +1,4 @@
-import { IProduct } from "src/app/shared/models/products.model";
+import { IProduct } from 'src/app/shared/types/products.model'
 
 export interface AppState {
     products: ReadonlyArray<IProduct>

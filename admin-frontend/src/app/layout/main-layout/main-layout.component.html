@@ -1,1 +1,52 @@
-<p>main-layout works!</p>
+<mat-sidenav-container autosize>
+    <mat-sidenav #sidenav mode="side" opened="true">
+        <mat-nav-list>
+            <mat-list-item (click)="isExpanded = !isExpanded">
+                <mat-icon
+                    mat-list-icon
+                    class="chevron-button"
+                    [ngClass]="{ rotated: isExpanded }"
+                    >chevron_right
+                </mat-icon>
+            </mat-list-item>
+
+            <mat-list-item [routerLink]="'dashboard'" routerLinkActive="active">
+                <mat-icon mat-list-icon>home</mat-icon>
+                <span *ngIf="isExpanded" class="menu-item">Главная</span>
+            </mat-list-item>
+
+            <mat-list-item [routerLink]="'products'" routerLinkActive="active">
+                <mat-icon mat-list-icon>shopping_basket</mat-icon>
+                <span *ngIf="isExpanded" class="menu-item">Товары</span>
+            </mat-list-item>
+
+            <mat-list-item
+                [routerLink]="'collections'"
+                routerLinkActive="active"
+            >
+                <mat-icon mat-list-icon>clear_all</mat-icon>
+                <span *ngIf="isExpanded" class="menu-item">Коллекции</span>
+            </mat-list-item>
+
+            <mat-list-item
+                [routerLink]="'categories'"
+                routerLinkActive="active"
+            >
+                <mat-icon mat-list-icon>library_books</mat-icon>
+                <span *ngIf="isExpanded" class="menu-item">Категории</span>
+            </mat-list-item>
+
+            <mat-list-item [routerLink]="'orders'" routerLinkActive="active">
+                <mat-icon mat-list-icon>shopping_cart</mat-icon>
+                <span *ngIf="isExpanded" class="menu-item">Заказы</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <!-- Content -->
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <h2>Панель администратора</h2>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

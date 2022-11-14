@@ -6,31 +6,6 @@ import { MainLayoutComponent } from 'src/app/layout/main-layout/main-layout.comp
 import { AuthGuard } from './shared/guards/auth.guard'
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     loadChildren: () =>
-    //         import('./main/main.module').then((m) => m.MainModule),
-    // },
-    // {
-    //     path: '',
-    //     // component: WrapperComponent,
-    //     pathMatch: 'full',
-    //     redirectTo: 'dashboard',
-    //     canActivate: [AuthGuard],
-    // },
-    // {
-    //     path: 'dashboard',
-    //     component: DashboardComponent,
-    //     canActivate: [AuthGuard],
-    // },
-    // {
-    //     path: 'products',
-    //     loadChildren: () =>
-    //         import('./pages/products/products.module').then(
-    //             (mod) => mod.ProductsModule
-    //         ),
-    //     canActivate: [AuthGuard],
-    // },
     {
         path: '',
         component: MainLayoutComponent,
@@ -45,6 +20,14 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./pages/dashboard/dashboard.module').then(
                         (mod) => mod.DashboardModule
+                    ),
+                canActivate: [AuthGuard],
+            },
+            {
+                path: 'products',
+                loadChildren: () =>
+                    import('./pages/products/products.module').then(
+                        (mod) => mod.ProductsModule
                     ),
                 canActivate: [AuthGuard],
             },

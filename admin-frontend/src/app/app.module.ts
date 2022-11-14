@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AuthGuard } from './shared/guards/auth.guard'
 import { StoreModule } from '@ngrx/store'
 
-import * as fromProductsReducer from 'src/app/main/pages/products/state/products.reducer'
+import * as fromProductsReducer from 'src/app/pages/products/store/reducers/products.reducer'
 
 import { EffectsModule } from '@ngrx/effects'
 
@@ -23,10 +23,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { JwtInterceptor } from './helpers/jwt.interceptor'
 import { TestService } from './shared/services/test.service'
 import { ProductCardComponent } from './shared/components/product-card/product-card.component'
-import { ProductsEffects } from 'src/app/main/pages/products/state/products.effects'
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { CategoriesEffects } from './main/pages/categories/state/categories.effects'
-import { LayoutModule } from './layout/layout.module'
+import { CategoriesEffects } from './mainDEL/pages/categories/state/categories.effects'
+// import { LayoutModule } from './layout/layout.module'
+import { ProductsEffects } from './pages/products/store/effects/products.effects'
+import { MaterialModule } from './shared/modules/material.module'
 
 @NgModule({
     declarations: [AppComponent, ProductCardComponent],
@@ -46,7 +48,7 @@ import { LayoutModule } from './layout/layout.module'
             autoPause: true, // Pauses recording actions and state changes when the extension window is not open
         }),
 
-        LayoutModule,
+        // LayoutModule,
 
         // MatSidenavModule,
         // MatListModule,
