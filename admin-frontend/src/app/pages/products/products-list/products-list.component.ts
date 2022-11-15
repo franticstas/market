@@ -1,4 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import {
+    ChangeDetectionStrategy,
+    Component,
+    OnDestroy,
+    OnInit,
+} from '@angular/core'
 import { Store } from '@ngrx/store'
 
 import {
@@ -12,6 +17,7 @@ import { IProduct } from 'src/app/shared/types/products.interface'
     selector: 'app-products-list',
     templateUrl: './products-list.component.html',
     styleUrls: ['./products-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
     products!: IProduct[]

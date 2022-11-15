@@ -1,9 +1,9 @@
 interface IImage {
     image: {
-        originalname: string,
-        path: string
-    },
-    _id: string
+        originalname: string;
+        path: string;
+    };
+    _id: string;
 }
 
 interface IProduct {
@@ -12,8 +12,7 @@ interface IProduct {
     description: string;
     category: string;
     images?: IImage[];
-    price?: number;
+    countInStock: string;
 }
 
-
-export {IProduct, IImage}
+export { IProduct, IImage };

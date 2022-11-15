@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core'
-import { Actions, createEffect, ofType } from '@ngrx/effects'
-import { of } from 'rxjs'
-import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators'
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 
-import { ProductsService } from 'src/app/shared/services/products.service'
-import { IProduct } from 'src/app/shared/types/products.interface'
-import { ProductActionTypes } from '../actions/products.action'
+import { ProductsService } from 'src/app/shared/services/products.service';
+import { IProduct } from 'src/app/shared/types/products.interface';
+import { ProductActionTypes } from '../actions/products.action';
 
 export type LoadProductByIdType = {
-    id: string
-    type: ProductActionTypes.LoadById
-}
+    id: string;
+    type: ProductActionTypes.LoadById;
+};
 
 @Injectable()
 export class ProductsEffects {
@@ -18,21 +18,25 @@ export class ProductsEffects {
         this.actions$.pipe(
             ofType(ProductActionTypes.Create),
             mergeMap((data: { product: IProduct; files: Array<File> }) => {
-                const imagesToUpload = data.files
+                const imagesToUpload = data.files;
 
-                const newCreatedProductFormData = new FormData()
-                newCreatedProductFormData.append('name', data.product.name)
+                const newCreatedProductFormData = new FormData();
+                newCreatedProductFormData.append('name', data.product.name);
                 newCreatedProductFormData.append(
                     'description',
                     data.product.description
-                )
+                );
                 newCreatedProductFormData.append(
                     'category',
                     data.product.category
-                )
+                );
+                newCreatedProductFormData.append(
+                    'countInStock',
+                    data.product.countInStock
+                );
 
                 for (let img of imagesToUpload) {
-                    newCreatedProductFormData.append('product_images', img)
+                    newCreatedProductFormData.append('product_images', img);
                 }
 
                 return this.productsService
@@ -42,10 +46,10 @@ export class ProductsEffects {
                         catchError(() =>
                             of({ type: ProductActionTypes.CreateFailure })
                         )
-                    )
+                    );
             })
         )
-    )
+    );
 
     loadProducts$ = createEffect(() =>
         this.actions$.pipe(
@@ -59,10 +63,10 @@ export class ProductsEffects {
                     catchError((error) =>
                         of({ type: ProductActionTypes.LoadFailure })
                     )
-                )
+                );
             })
         )
-    )
+    );
 
     loadProductById$ = createEffect(() =>
         this.actions$.pipe(
@@ -76,10 +80,10 @@ export class ProductsEffects {
                     catchError((error) =>
                         of({ type: ProductActionTypes.LoadByIdFailure })
                     )
-                )
+                );
             })
         )
-    )
+    );
 
     constructor(
         private actions$: Actions,

@@ -11,13 +11,17 @@ import { ProductComponent } from "./product/product.component";
 import { ProductsListComponent } from "./products-list/products-list.component";
 import { ProductsRoutingModule } from "./products-routing.module";
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
-import { MatTableModule } from '@angular/material/table'  
+import { MatTableModule } from '@angular/material/table';
+import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component'  
 
 @NgModule({
     declarations: [
         ProductsListComponent,
         ProductComponent,
-        ProductPreviewComponent
+        ProductPreviewComponent,
+        AddProductComponent,
+        EditProductComponent
     ],
     imports: [
         CommonModule,
