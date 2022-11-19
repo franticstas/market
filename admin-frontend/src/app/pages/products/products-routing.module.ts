@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AddProductComponent } from './add-product/add-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { ProductsResolver } from './resolver/products.resolve';
+import { AddProductComponent } from './containers/add-product/add-product.component';
+import { EditProductComponent } from './containers/edit-product/edit-product.component';
+import { ProductsListComponent } from './containers/products-list/products-list.component';
+import { ProductsResolver } from './store/resolvers/products.resolve';
 
 const routes: Routes = [
     {

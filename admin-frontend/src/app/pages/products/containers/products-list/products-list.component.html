@@ -1,0 +1,7 @@
+<h1>Список товаров</h1>
+<button mat-button [routerLink]="'/products/create'" type="button">
+    Добавить товар
+</button>
+
+<app-products-list-table [productsList]="productsList$ | async">
+</app-products-list-table>

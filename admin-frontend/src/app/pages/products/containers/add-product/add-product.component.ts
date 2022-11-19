@@ -15,11 +15,11 @@ import { environment } from 'src/environments/environment';
 import {
     createProduct,
     getCategoryList,
-} from '../store/actions/products.action';
+} from 'src/app/pages/products/store/actions/products.action';
 import {
     ProductsState,
     selectCategoryList,
-} from '../store/selectors/products.selectors';
+} from 'src/app/pages/products/store/selectors/products.selectors';
 
 @Component({
     selector: 'app-add-product',
