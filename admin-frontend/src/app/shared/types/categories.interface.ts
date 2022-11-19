@@ -1,16 +1,17 @@
-import { IImage } from './products.interface'
+import { IImage } from './products.interface';
 
 interface ICategory {
-    name: string
-    description: string
-    image: IImage
-    subCategoriesList: ISubCategory[]
+    name: string;
+    _id: string;
+    description: string;
+    image: IImage;
+    subCategoriesList: ISubCategory[];
 }
 
 interface ISubCategory {
-    name: string
-    description: string
-    image: IImage
+    name: string;
+    description: string;
+    image: IImage;
 }
 
-export { ICategory, ISubCategory }
+export { ICategory, ISubCategory };

@@ -1,14 +1,15 @@
-import { Action, createReducer, on } from '@ngrx/store'
+import { Action, createReducer, on } from '@ngrx/store';
 
-import { ProductsDataState } from 'src/app/pages/products/types/products-data-state.interfact'
-import * as ProductAction from '../actions/products.action'
+import { ProductsDataState } from 'src/app/pages/products/types/products-data-state.interfact';
+import * as ProductAction from '../actions/products.action';
 
 export const initialState: ProductsDataState = {
     productsList: [],
     loadingProducts: false,
     sendingProduct: false,
     loadedProduct: null,
-}
+    categoryList: [],
+};
 
 const productsReducer = createReducer(
     initialState,
@@ -28,9 +29,13 @@ const productsReducer = createReducer(
     on(ProductAction.loadProductByIdSuccess, (state, { loadedProduct }) => ({
         ...state,
         loadedProduct,
+    })),
+    on(ProductAction.getCategoryListSuccess, (state, { categoryList }) => ({
+        ...state,
+        categoryList,
     }))
-)
+);
 
 export function reducer(state: ProductsDataState | undefined, action: Action) {
-    return productsReducer(state, action)
+    return productsReducer(state, action);
 }

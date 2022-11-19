@@ -85,6 +85,23 @@ export class ProductsEffects {
         )
     );
 
+    getCategoryList$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ProductActionTypes.GetCategoryList),
+            switchMap(() => {
+                return this.productsService.getCategoryList().pipe(
+                    map((categoryList) => ({
+                        type: ProductActionTypes.GetCategoryListSuccess,
+                        categoryList,
+                    })),
+                    catchError((error) =>
+                        of({ type: ProductActionTypes.GetCategoryListFailure })
+                    )
+                );
+            })
+        )
+    );
+
     constructor(
         private actions$: Actions,
         private productsService: ProductsService

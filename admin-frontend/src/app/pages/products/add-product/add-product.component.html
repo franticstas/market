@@ -35,11 +35,10 @@
         <mat-form-field appearance="fill">
             <mat-label>Категория товара</mat-label>
             <mat-select formControlName="category" category="category">
-                <mat-option value="Первая категория"
-                    >Первая категория</mat-option
-                >
-                <mat-option value="Вторая категория"
-                    >Вторая категория</mat-option
+                <mat-option
+                    *ngFor="let category of categoryList"
+                    [value]="category._id"
+                    >{{ category.name }}</mat-option
                 >
             </mat-select>
         </mat-form-field>

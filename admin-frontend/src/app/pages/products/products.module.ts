@@ -1,27 +1,25 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatButtonModule } from "@angular/material/button";
-import { MatCardModule } from "@angular/material/card";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatIconModule } from "@angular/material/icon";
-import { MatInputModule } from "@angular/material/input";
-import { MatSelectModule } from "@angular/material/select";
-import { ProductComponent } from "./product/product.component";
-import { ProductsListComponent } from "./products-list/products-list.component";
-import { ProductsRoutingModule } from "./products-routing.module";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { ProductsRoutingModule } from './products-routing.module';
 import { ProductPreviewComponent } from './product-preview/product-preview.component';
 import { MatTableModule } from '@angular/material/table';
 import { AddProductComponent } from './add-product/add-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component'  
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
     declarations: [
         ProductsListComponent,
-        ProductComponent,
         ProductPreviewComponent,
         AddProductComponent,
-        EditProductComponent
+        EditProductComponent,
     ],
     imports: [
         CommonModule,
@@ -33,7 +31,7 @@ import { EditProductComponent } from './edit-product/edit-product.component'
         MatSelectModule,
         MatInputModule,
         MatButtonModule,
-        MatTableModule
-    ]
+        MatTableModule,
+    ],
 })
-export class ProductsModule { }
+export class ProductsModule {}

@@ -2,16 +2,24 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    OnDestroy,
     OnInit,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { ICategory } from 'src/app/shared/types/categories.interface';
 
 import { IImage, IProduct } from 'src/app/shared/types/products.interface';
 import { environment } from 'src/environments/environment';
-import { createProduct } from '../store/actions/products.action';
-import { ProductsState } from '../store/selectors/products.selectors';
+import {
+    createProduct,
+    getCategoryList,
+} from '../store/actions/products.action';
+import {
+    ProductsState,
+    selectCategoryList,
+} from '../store/selectors/products.selectors';
 
 @Component({
     selector: 'app-add-product',
@@ -19,7 +27,7 @@ import { ProductsState } from '../store/selectors/products.selectors';
     styleUrls: ['./add-product.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent implements OnInit, OnDestroy {
     imagesToUpload: Array<File> = [];
     uri = environment.backendUrl;
     imagesPreview: string[] = [];
@@ -27,6 +35,7 @@ export class AddProductComponent implements OnInit {
     subscription!: Subscription;
     productForm!: FormGroup;
     loadImages: IImage[] = [];
+    categoryList: ICategory[] = [];
 
     constructor(
         private fb: FormBuilder,
@@ -35,6 +44,8 @@ export class AddProductComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.store.dispatch(getCategoryList());
+
         this.productForm = this.fb.group({
             name: ['', Validators.required],
             description: ['', Validators.required],
@@ -42,6 +53,16 @@ export class AddProductComponent implements OnInit {
             product_images: ['', Validators.required],
             countInStock: ['', Validators.required],
         });
+
+        this.subscription = this.store
+            .select(selectCategoryList)
+            .subscribe((categoryList) => {
+                this.categoryList = categoryList;
+            });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 
     imageChangeEvent(fileInput: any) {
@@ -60,9 +81,9 @@ export class AddProductComponent implements OnInit {
     }
 
     submit() {
-        if (!this.productForm.valid) {
-            return;
-        }
+        // if (!this.productForm.valid) {
+        //     return;
+        // }
 
         const payload = {
             product: this.productForm.value,
